@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Пользователь: {{ user_info.user.name }}</h2>
+<h3>Подписки:</h3>
+{% if user_info.subscriptions %}
+    <ul>
+    {% for c in user_info.subscriptions %}
+        <li>{{ c.char_code }} — {{ "%.2f"|format(c.value) }} руб. за {{ c.nominal }} шт.</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Нет подписок</p>
+{% endif %}
+<a href="/users" class="btn btn-secondary">Назад к списку</a>
+{% endblock %}
